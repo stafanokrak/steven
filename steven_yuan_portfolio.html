@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steven Yuan · Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f7f6f3;
+    --color-text-primary: #1a1a18;
+    --color-text-secondary: #5f5e5a;
+    --color-text-tertiary: #888780;
+    --color-border: rgba(0,0,0,0.12);
+    --color-border-hover: rgba(0,0,0,0.25);
+    --radius-md: 8px;
+    --radius-lg: 12px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #1a1a18;
+      --color-bg-secondary: #242422;
+      --color-text-primary: #f1efe8;
+      --color-text-secondary: #b4b2a9;
+      --color-text-tertiary: #888780;
+      --color-border: rgba(255,255,255,0.12);
+      --color-border-hover: rgba(255,255,255,0.25);
+    }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    padding: 0 1.5rem;
+  }
+  .site { max-width: 720px; margin: 0 auto; }
+  .hero { padding: 3.5rem 0 2rem; border-bottom: 0.5px solid var(--color-border); }
+  .hero-name { font-size: 36px; font-weight: 500; letter-spacing: -0.5px; }
+  .hero-title { font-size: 15px; color: var(--color-text-secondary); margin-top: 4px; }
+  .hero-links { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+  .hero-links a, .hero-links span {
+    font-size: 13px; color: var(--color-text-secondary); text-decoration: none;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .hero-links a:hover { color: var(--color-text-primary); }
+  .hero-bio { margin-top: 20px; font-size: 15px; color: var(--color-text-secondary); line-height: 1.75; max-width: 560px; }
+  .section { padding: 2rem 0; border-bottom: 0.5px solid var(--color-border); }
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--color-text-tertiary); text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .edu-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .edu-school { font-size: 15px; font-weight: 500; }
+  .edu-degree { font-size: 13px; color: var(--color-text-secondary); margin-top: 3px; }
+  .edu-gpa { font-size: 13px; color: var(--color-text-secondary); white-space: nowrap; text-align: right; }
+  .edu-year { font-size: 12px; color: var(--color-text-tertiary); text-align: right; margin-top: 2px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .proj-card {
+    background: var(--color-bg);
+    border: 0.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    transition: border-color 0.15s;
+  }
+  .proj-card:hover { border-color: var(--color-border-hover); }
+  .proj-title { font-size: 14px; font-weight: 500; }
+  .proj-year { font-size: 12px; color: var(--color-text-tertiary); margin-top: 2px; }
+  .proj-desc { font-size: 13px; color: var(--color-text-secondary); margin-top: 8px; line-height: 1.65; }
+  .proj-tags { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; background: var(--color-bg-secondary);
+    color: var(--color-text-secondary); border-radius: 4px; padding: 3px 8px;
+  }
+  .exp-item { margin-bottom: 1.75rem; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .exp-role { font-size: 14px; font-weight: 500; }
+  .exp-date { font-size: 12px; color: var(--color-text-tertiary); white-space: nowrap; }
+  .exp-org { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+  .exp-bullets { margin-top: 8px; padding-left: 0; list-style: none; }
+  .exp-bullets li {
+    font-size: 13px; color: var(--color-text-secondary); line-height: 1.65;
+    padding-left: 14px; position: relative; margin-bottom: 4px;
+  }
+  .exp-bullets li::before { content: "–"; position: absolute; left: 0; color: var(--color-text-tertiary); }
+  .award-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .award-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-text-tertiary); margin-top: 8px; flex-shrink: 0; }
+  .award-text { font-size: 13px; color: var(--color-text-secondary); line-height: 1.65; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+  .skill-cat { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 5px; }
+  .skill-items { font-size: 13px; color: var(--color-text-secondary); line-height: 1.7; }
+  .footer { padding: 1.5rem 0 2.5rem; font-size: 12px; color: var(--color-text-tertiary); }
+</style>
+</head>
+<body>
+<div class="site">
+
+  <div class="hero">
+    <div class="hero-name">Steven Yuan</div>
+    <div class="hero-title">First-year Engineering Student · University of British Columbia · Mechanical Engineering</div>
+    <div class="hero-links">
+      <a href="mailto:stevenyuanwzh@gmail.com"><i class="ti ti-mail"></i>stevenyuanwzh@gmail.com</a>
+      <a href="https://www.linkedin.com/in/stevenyuanwzh" target="_blank"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+      <span><i class="ti ti-phone"></i>672-513-1676</span>
+      <span><i class="ti ti-map-pin"></i>Vancouver, BC</span>
+    </div>
+    <p class="hero-bio">Mechanical engineering student with three years of hands-on robotics experience, a deep curiosity for real-world systems, and a strong work ethic built through high-level competition in both robotics and classical piano performance.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Education</div>
+    <div class="edu-row">
+      <div>
+        <div class="edu-school">University of British Columbia</div>
+        <div class="edu-degree">Bachelor of Applied Science · Intended Major: Mechanical Engineering</div>
+      </div>
+      <div>
+        <div class="edu-gpa">GPA 86/100</div>
+        <div class="edu-year">2025–2030</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Projects</div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-title">VEX Robotics Competition</div>
+        <div class="proj-year">2022–2025 · Team Captain, Mechanical Lead</div>
+        <div class="proj-desc">Led mechanical design of 7 competition robots in Onshape. 1000+ hours, 200+ pages of engineering documentation each season. Top 20% at competitions, Provincial champion qualifier, World championship qualifier.</div>
+        <div class="proj-tags"><span class="tag">Onshape</span><span class="tag">Mechanical design</span><span class="tag">Documentation</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">UBC Rapid Design Team</div>
+        <div class="proj-year">2025–Present · Mechanical Designer</div>
+        <div class="proj-desc">Improved FDM 3D printer reliability by diagnosing and resolving print failures. Optimized filament recycler layout and performed torque-based load analysis. Designed CAD models applying DFM/A principles.</div>
+        <div class="proj-tags"><span class="tag">SolidWorks</span><span class="tag">FDM 3D printing</span><span class="tag">DFM/A</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">LED Piano Visualizer</div>
+        <div class="proj-year">2025</div>
+        <div class="proj-desc">Built a Raspberry Pi system with LED strip overlay for electric keyboards that illuminates keys in real time as they are pressed. Reduced cost 50% vs commercial equivalents using off-the-shelf components.</div>
+        <div class="proj-tags"><span class="tag">Raspberry Pi</span><span class="tag">Python</span><span class="tag">3D printing</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Pneumatic Launcher</div>
+        <div class="proj-year">2024</div>
+        <div class="proj-desc">Designed and assembled an air chamber and valve system with ABS pipes. Modeled performance using projectile motion and energy calculations within safe operating limits. Achieved 200 km/h initial velocity.</div>
+        <div class="proj-tags"><span class="tag">CAD</span><span class="tag">Fluid mechanics</span><span class="tag">Safety analysis</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Experience</div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">STEM Instructor</div>
+          <div class="exp-org">Science Alive @ Simon Fraser University</div>
+        </div>
+        <div class="exp-date">2024–2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Taught 300+ students grades K–6 science and engineering through workshops, day camps, and summer camps</li>
+        <li>Designed engineering curriculum and delivered lessons covering structural design and simple circuits</li>
+        <li>Supervised volunteers grades 9–12, improving class flow and student support</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Robotics Instructor</div>
+          <div class="exp-org">Burnaby School District</div>
+        </div>
+        <div class="exp-date">2025</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Guided 75+ students grades 4–7 in assembly and programming of VEX IQ robots</li>
+        <li>Encouraged students to troubleshoot independently by guiding their thinking before suggesting solutions</li>
+        <li>Influenced several students to pursue higher-level robotics or engineering</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Afterschool Daycare Volunteer</div>
+          <div class="exp-org">Gilmore Elementary School</div>
+        </div>
+        <div class="exp-date">2023–2024</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Supported students with homework and academic questions after school</li>
+        <li>Supervised students indoors and outdoors while maintaining safety standards</li>
+      </ul>
+    </div>
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Summer Camp Assistant</div>
+          <div class="exp-org">Mount Seymour</div>
+        </div>
+        <div class="exp-date">2022</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Ensured camper safety during indoor and outdoor activities in a fast-paced camp environment</li>
+        <li>Led group activities and games, fostering teamwork and engagement among campers</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Achievements</div>
+    <div class="award-item"><div class="award-dot"></div><div class="award-text">First place — Crescendo International Music Competition · Invited to perform at Carnegie Hall, New York City</div></div>
+    <div class="award-item"><div class="award-dot"></div><div class="award-text">Gold and Silver awards at Richmond Music Festival, CDMF, and VAYA</div></div>
+    <div class="award-item"><div class="award-dot"></div><div class="award-text">10+ awards at regional and provincial VEX robotics events including tournament Champions and Design Award</div></div>
+    <div class="award-item"><div class="award-dot"></div><div class="award-text">Qualified to VEX Provincial Championships annually · Qualified to World Championships once</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-cat">Design / CAD</div>
+        <div class="skill-items">SolidWorks, Onshape, GD&T, DFM/A</div>
+      </div>
+      <div>
+        <div class="skill-cat">Fabrication</div>
+        <div class="skill-items">FDM 3D printing, Laser cutting, Soldering</div>
+      </div>
+      <div>
+        <div class="skill-cat">Developer tools</div>
+        <div class="skill-items">Arduino IDE, Raspberry Pi, C, VEXCode, VS Code</div>
+      </div>
+      <div>
+        <div class="skill-cat">Productivity</div>
+        <div class="skill-items">Microsoft Office, MATLAB, LaTeX, Google Workspace</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Steven Yuan · Vancouver, BC · stevenyuanwzh@gmail.com · 672-513-1676</div>
+
+</div>
+</body>
+</html>
